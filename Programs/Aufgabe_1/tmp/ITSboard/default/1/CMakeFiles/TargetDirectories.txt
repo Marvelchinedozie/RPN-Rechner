@@ -1,0 +1,11 @@
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/database.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Aufgabe_1.Debug+ITSboard.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Group_Drivers_BSP_STM32F4xx_Nucleo_144.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Group_Drivers_Board.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Group_Drivers_STM32F4xx_HAL_Driver.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Group_Utils.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Group_LCD.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Group_ITS_BRD_LIB.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/Group_Program_User_Src.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/edit_cache.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/1/CMakeFiles/rebuild_cache.dir

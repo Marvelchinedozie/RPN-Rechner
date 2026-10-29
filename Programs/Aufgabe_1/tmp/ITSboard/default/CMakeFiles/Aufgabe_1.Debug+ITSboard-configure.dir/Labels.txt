@@ -1,0 +1,10 @@
+# Target labels
+ Aufgabe_1.Debug+ITSboard
+# Source files and their labels
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/Aufgabe_1.Debug+ITSboard-configure
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/Aufgabe_1.Debug+ITSboard-configure.rule
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/Aufgabe_1.Debug+ITSboard/src/Aufgabe_1.Debug+ITSboard-stamp/Aufgabe_1.Debug+ITSboard-configure.rule
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/Aufgabe_1.Debug+ITSboard/src/Aufgabe_1.Debug+ITSboard-stamp/Aufgabe_1.Debug+ITSboard-patch.rule
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/Aufgabe_1.Debug+ITSboard/src/Aufgabe_1.Debug+ITSboard-stamp/Aufgabe_1.Debug+ITSboard-update.rule
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/Aufgabe_1.Debug+ITSboard/src/Aufgabe_1.Debug+ITSboard-stamp/Aufgabe_1.Debug+ITSboard-download.rule
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/Aufgabe_1.Debug+ITSboard/src/Aufgabe_1.Debug+ITSboard-stamp/Aufgabe_1.Debug+ITSboard-mkdir.rule

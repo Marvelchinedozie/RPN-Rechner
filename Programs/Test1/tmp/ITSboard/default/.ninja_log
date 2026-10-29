@@ -1,0 +1,11 @@
+# ninja log v7
+1	17	1792063967113800771	Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-mkdir	2cdca770f1ba5404
+1	17	1792063967113800771	/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-mkdir	2cdca770f1ba5404
+17	33	1792063967129265532	Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-download	456283db3902e51f
+17	33	1792063967129265532	/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-download	456283db3902e51f
+33	48	1792063967144948038	Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-update	9bdc1994e9bc6eda
+33	48	1792063967144948038	/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-update	9bdc1994e9bc6eda
+48	64	1792063967160224178	Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-patch	bfb1ce4b7e8b9849
+48	64	1792063967160224178	/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-patch	bfb1ce4b7e8b9849
+64	1976	1792063969073017056	Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-configure	7541d4b4b1b690ea
+64	1976	1792063969073017056	/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-configure	7541d4b4b1b690ea

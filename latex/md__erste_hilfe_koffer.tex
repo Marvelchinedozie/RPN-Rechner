@@ -1,0 +1,167 @@
+\chapter{Tipps zur Entwicklung unter VSCode auf dem ITS-\/\+Board }
+\hypertarget{md__erste_hilfe_koffer}{}\label{md__erste_hilfe_koffer}\index{Tipps zur Entwicklung unter VSCode auf dem ITS-\/Board@{Tipps zur Entwicklung unter VSCode auf dem ITS-\/Board}}
+\label{md__erste_hilfe_koffer_autotoc_md0}%
+\Hypertarget{md__erste_hilfe_koffer_autotoc_md0}%
+\hypertarget{md__erste_hilfe_koffer_autotoc_md1}{}\doxysection{\texorpdfstring{Beschreibung des Systems}{Beschreibung des Systems}}\label{md__erste_hilfe_koffer_autotoc_md1}
+
+\begin{DoxyItemize}
+\item STM32\+F429 auf dem NUCLEO-\/\+F439\+ZI Board
+\item VSCode mit CMSIS
+\item STLink
+\item GDB Debugger
+\item GNU Arm Embedded Toolchain (arm-\/none-\/eabi-\/gcc, arm-\/none-\/eabi-\/gdb)
+\item Py\+OCD wird fürs Laden und Debugging verwendet. Py\+OCD ist ein Python-\/basiertes Open-\/\+Source-\/\+Tool für das Debugging und Flashen von ARM-\/\+Cortex-\/\+M-\/\+Mikrocontrollern (inkl. STM32). Es ersetzt in diesem Fall ST-\/\+Link GDB Server oder Open\+OCD und kommuniziert direkt mit dem ST-\/\+Link-\/\+Adapter auf dem Nucleo-\/\+Board. Der Aufruf enthält eine yml Datei, die Infos wie Prozessor etc. enthält.
+\item Eine Solution enthält alle Daten zur Entwicklung eines Programms für das ITS-\/\+Board.
+\item Bei der Auswahl einer Solution unter CMSIS werden die Dateien unter .vscode/ von CMSIS angepasst bzw. modifiziert. Insbesondere
+\begin{DoxyItemize}
+\item beschreibt .vscode/\+launch.\+json die Schnittstelle zum Debugger.
+\item beschreibt die Datei .vscode/\+tasks.\+json den Compilations-\/ und Link Prozess.
+\item wird die Datei .vscode/\+settions.\+json nur teilweise überschrieben. 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md2}{}\doxysection{\texorpdfstring{Aufbau der Entwicklungsumgebung}{Aufbau der Entwicklungsumgebung}}\label{md__erste_hilfe_koffer_autotoc_md2}
+\hypertarget{md__erste_hilfe_koffer_autotoc_md3}{}\doxysubsection{\texorpdfstring{Verwendete Komponenten}{Verwendete Komponenten}}\label{md__erste_hilfe_koffer_autotoc_md3}
+
+\begin{DoxyItemize}
+\item VSCode als Editor
+\item CMSIS-\/\+Toolbox für den STM32 spezifischen Teil
+\item cbuild als zentrales Build Tool
+\item CMake als make System, das cbuild nutzt
+\item Py\+OCD als Schnittstelle zum STM32\+F4 für Load und Debugging 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md4}{}\doxysubsection{\texorpdfstring{Projektkonfiguration (YAML-\/\+Dateien)}{Projektkonfiguration (YAML-\/\+Dateien)}}\label{md__erste_hilfe_koffer_autotoc_md4}
+
+\begin{DoxyItemize}
+\item {\bfseries{{\ttfamily \texorpdfstring{$\ast$}{*}.csolution.\+yml }}}: Globale Einstellungen (Compiler, Build-\/\+Typen, Abhängigkeiten, device ...).
+\item {\bfseries{{\ttfamily \texorpdfstring{$\ast$}{*}.cproject.\+yml}}}: Projekt-\/spezifische Einstellungen mit Blick auf C
+\item Beim Erzeugen eines neuen Projekts werden diese Dateien aus den entsprechenden Skripten generiert. 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md5}{}\doxysubsection{\texorpdfstring{Build-\/\+Prozess (CMSIS-\/\+Toolbox + CMake)}{Build-\/\+Prozess (CMSIS-\/\+Toolbox + CMake)}}\label{md__erste_hilfe_koffer_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Auf Basis der Daten aus den Dateien csolution.\+yml und cproject.\+yml generiert cbuild alle anderen Dateien wie z.\+B.:
+\begin{DoxyItemize}
+\item CMake\+Lists.\+txt im tmp/\+\texorpdfstring{$\ast$}{*}.Debug+\+ITSboard/
+\item \texorpdfstring{$\ast$}{*}.cbuild-\/run.\+yml im out/ Ordner (für Py\+OCD).
+\item Binärdateien (.elf, .bin, .hex) im out/ Ordner.
+\end{DoxyItemize}
+\item Der Build Prozess wird über die Build Task in CMSIS View gestartet, die nur cbuild mit passenden Parametern aufruft. Dabei generiert cbuild automatisch eine CMake\+Lists.\+txt, um CMake als "{}\+Frontend"{} für VSCode. Die Datei wird aus den YAML-\/\+Dateien generiert (z. B. mit cbuild2cmake). 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md6}{}\doxysubsection{\texorpdfstring{Debugging/\+\+Flashing (Py\+OCD)}{Debugging/\+\+Flashing (Py\+OCD)}}\label{md__erste_hilfe_koffer_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Wird über Py\+OCD umgesetzt
+\item Die entsprechenden Aufrufe vom Py\+OCD, die an den Tasten von CMSIS gebunden sind, stehen in .vscode/\+launch.\+json und .vscode/\+tasks.\+json. Diese Dateien werden generiert. 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md7}{}\doxysubsection{\texorpdfstring{Einflussnahme auf den Build-\/\+Prozess}{Einflussnahme auf den Build-\/\+Prozess}}\label{md__erste_hilfe_koffer_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Man stellt die relevanten Aspekte in den \texorpdfstring{$\ast$}{*}.yml Dateien ein. Dabei können einige Einstellungen andere Einstellungen überschreiben. Zum Beispiel überschreibt die Einstellung des Optimierungslevels die entsprechenden Compiler Optionen.
+\begin{DoxyItemize}
+\item In \texorpdfstring{$\ast$}{*}. cproject.\+yml werden zum Beispiel Quelldateien eingetragen. Die Daten fließen in die erzeugten Dateien CMake\+Lists.\+txt und cbuild-\/run.\+yml ein.
+\item In \texorpdfstring{$\ast$}{*}.cproject.\+yml werden z.\+B. Infos zu einzubindenden Bibliotheken/\+\+Treiber eingestellt. 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md8}{}\doxysection{\texorpdfstring{Tipps und Tricks}{Tipps und Tricks}}\label{md__erste_hilfe_koffer_autotoc_md8}
+\hypertarget{md__erste_hilfe_koffer_autotoc_md9}{}\doxysubsection{\texorpdfstring{Board kann nicht geflashed werden -\/ keine Verbindung}{Board kann nicht geflashed werden -\/ keine Verbindung}}\label{md__erste_hilfe_koffer_autotoc_md9}
+Eine Lösung, die oft funktioniert:
+\begin{DoxyItemize}
+\item Den ST-\/\+Link manuell startet st-\/util -\/p 61234 -\/d Wird das device nicht erkannt, es es oftmals ein USB Problem der Art „schlechtes Kabel“, „zu wenig Strom“ oder Treiber veraltet.
+\item Wenn Kabel und Strom als Fehlerquellen ausgeschlossen sind, das ITS-\/\+Board im Board Loader starten. Dazu trennt man die USB Verbindung, hält den Reset Button für mindestens 5 Sekunden gedrückt während man das USB Kabel wieder in den PC steckt. Der Befehl st-\/util -\/p 61234 -\/d sollte nun liefern, dass das Board angeschlossen ist.
+\item Anschließend das Board erneut trennen, wieder verbinden und dann Flash erneut probieren.
+\item Wenn das alles nichts gebracht hat, den stlink Treiber neu installieren. brew reinstall stlink 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md10}{}\doxysubsection{\texorpdfstring{Compiler Flags in der Ausgabe sehen}{Compiler Flags in der Ausgabe sehen}}\label{md__erste_hilfe_koffer_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Eigentlich übergibt man ein --verbose dem cbuild Aufruf. Dann wird aber nicht der Generierungsprozess der Dateien beachtet.
+\item Daher in der \texorpdfstring{$\ast$}{*}.cproject.\+yml Datei unter setups:\+mics:\+C:-\/ -\/v einfügen.
+\item In tmp/\+1/\+build.\+ninja findet man auch die Flags, die übergeben werden.
+\item Man kann sich auch tmp/\+1/\+compile\+\_\+commands.\+json anschauen 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md11}{}\doxysubsection{\texorpdfstring{Verwendung von printf}{Verwendung von printf}}\label{md__erste_hilfe_koffer_autotoc_md11}
+
+\begin{DoxyItemize}
+\item printf wird auf den USB-\/\+UART umgelenkt. Das Programm Test\+Stdinout\+USART aus dem Repo ITS-\/\+BRD-\/\+VSC enthält ein einfaches Beispiel. 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md12}{}\doxysubsection{\texorpdfstring{ARM Debugger Befehle eingeben}{ARM Debugger Befehle eingeben}}\label{md__erste_hilfe_koffer_autotoc_md12}
+
+\begin{DoxyEnumerate}
+\item Verfahren
+\begin{DoxyItemize}
+\item Es werden erstmal die Ausgaben des Debugger angezeigt. Will man einen Befehl wie „set \$format = ’d‘“ an den Debugger schicken, dann muss im GDB Terminal vor den Befehl ein „\texorpdfstring{$>$}{>}“ setzen. Also „\texorpdfstring{$>$}{>} set \$format = ’d’“
+\end{DoxyItemize}
+\item Verfahren
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item Es wird eine zweite Instanz des gdb gestartet und mit stlink verbunden. Das geht wie folgt:
+\begin{DoxyItemize}
+\item Starte in einem Terminal den Debugger über arm-\/none-\/eabi-\/gdb xxx.\+axf
+\item Verbindung zum Debug Server über target remote :3333
+\item Lese zum Beispiel eine Speicherzelle über print/\+x {\itshape (int})0x20000000
+\item Schreibe zum Beispiel einen Speicherzelle über set \{int\}0x20000000 = 0x\+FFFFFFFF 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md13}{}\doxysubsection{\texorpdfstring{Open Disassembler View}{Open Disassembler View}}\label{md__erste_hilfe_koffer_autotoc_md13}
+
+\begin{DoxyItemize}
+\item Debugger starten.
+\item Über Shift-\/\+Command-\/P (Shift-\/\+Strg-\/P) wird die Befehls-\/\+Palette geöffnet und die “\+GDB: Open Disassembly View“ Anwendung manuell gestartet.
+\item Oftmals gibt es eine Fehlermeldung, dass ein Adresszugriff fehlerhaft ist. Das ist o.\+k., weil der Disassembly View die richtige Adresse noch nicht kennt.
+\item Einen Schritt im Debugger machen. Jetzt kennt der Disassembly View die richtige Adresse und arbeitet wie erwartet. 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md14}{}\doxysubsection{\texorpdfstring{Darstellung des Memory Inhalts}{Darstellung des Memory Inhalts}}\label{md__erste_hilfe_koffer_autotoc_md14}
+
+\begin{DoxyEnumerate}
+\item Verfahren: Nur lesender Zugriff auf den Speicher
+\begin{DoxyItemize}
+\item Dieses Verfahren hat eine gute übersichtliche Darstellung
+\item Starte den Debugger und gehe zum ersten Breakpoint
+\item Über Shift-\/\+Command-\/P (Shift-\/\+Strg-\/P) wird die Befehls-\/\+Palette geöffnet und die “\+GDB: Open Memory Browser“ Anwendung gestartet.
+\item Im Feld Location wird eine Adresse, eine Variable die eine Adresse speichert, ein Zeiger auf eine Variable oder \&Assembler-\/\+Label einer Speicherstelle eingegeben. Über Go wird dann das Fenster aktualisiert (Das Drücken auf Go wird gerne mal vergessen :)).
+\item Auf dem ITS-\/\+Board wird in der Regel Little-\/\+Endian Darstellung verwendet. In den ersten beiden Praktika von GTP beachten, dass man „\+Bytes Per Group“ auf 1 setzt, da Big und Little Endian noch nicht bekannt ist.
+\item Little/\+\+Big Endian bezieht sich auf „\+Bytes per Group“ -\/ die Gruppe wird als Little bzw. Big Endian Wert dargestellt.
+\end{DoxyItemize}
+\item Verfahren: Nur lesender Zugriff auf den Speicher
+\begin{DoxyItemize}
+\item Das Verfahren hat keine so schöne Darstellung wie das erste Verfahren. Bei der Verwendung von Assembler Labeln wird nicht auf die Debug Informationen zugegriffen (werden vermutlich vom Assembler nicht erzeugt), so dass Adressen nicht korrekt dargestellt werden.
+\item Start des Debuggers
+\item Aktiviere über “...“ den Memory-\/\+Viewer
+\item Gebe in den Memory Viewer eine Adresse, eine Variable die eine Adresse speichert, ein Zeiger auf eine Variable oder \&Assembler-\/\+Label einer Speicherstelle ein.
+\item Über Drücken des runden File Buttons wird ein Update der Darstellung gefordert -\/ wird gerne mal vergessen. Die Enter Taste sorgt nicht für den Update.
+\end{DoxyItemize}
+\item Verfahren: Lesender {\bfseries{und schreibender}} Zugriff auf den Speicher
+\begin{DoxyItemize}
+\item Das Verfahren verwendet das Watch Fenster.
+\item Zur Darstellung der Werte im Hex Format muss die Default Darstellung des Debuggers umgestellt werden. Das geht zum Beispiel im GDB Terminal mit der Eingabe “\texorpdfstring{$>$}{>} set output-\/radix 16“.
+\item Der entscheidende Vorteil von diesem Weg ist, dass man auf den Speicher schreiben kann.
+\item Start des Debuggers
+\item An einem Breakpoint wird die „gecarstete“ Adresse im Watch Bereich des Debuggers eingegeben, z.\+B.: \texorpdfstring{$\ast$}{*}((uint8\+\_\+t \texorpdfstring{$\ast$}{*})0x2000000c)@32
+\item Es kann auch eine Variable oder ein Assembler Label verwendet werden, z.\+B.: \texorpdfstring{$\ast$}{*}((uint8\+\_\+t \texorpdfstring{$\ast$}{*})\&VariableB)@32
+\item Man kann die einzelnen Feldelemente auswählen und neue Werte setzen, indem man in Kontext Menü “\+Set Value“ wählt. Hier sind dann auch Hex Werte erlaubt. 
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md__erste_hilfe_koffer_autotoc_md15}{}\doxysubsection{\texorpdfstring{In main.\+s kann man keinen Breakpoint setzen}{In main.\+s kann man keinen Breakpoint setzen}}\label{md__erste_hilfe_koffer_autotoc_md15}
+
+\begin{DoxyItemize}
+\item Ein typischer Fall ist, dass der Language Mode für main.\+s nicht auf arm-\/debugger.\+arm“ steht. Wenn man in Editor in der Datei main.\+s ist, kann man unten rechts in der Status Leiste den Language Mode entsprechend einstellen.
+\item In aktuellen Repos sollte in .vscode/\+settings.\+json der Eintrag "{}files.\+associations"{}: \{ "{}\texorpdfstring{$\ast$}{*}.\+s"{}: "{}arm-\/debugger.\+arm"{} \} stehen. Dann ist der Language Mode für alle \texorpdfstring{$\ast$}{*}.s Dateien entsprechend gesetzt. 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md16}{}\doxysubsection{\texorpdfstring{VSCode-\/\+Benutzerdaten-\/\+Cache}{VSCode-\/\+Benutzerdaten-\/\+Cache}}\label{md__erste_hilfe_koffer_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Wenn alles nicht zusammenpasst, dann einfach mal den Cache löschen -\/ Tat aus Verzweiflung :).
+\item VSCode schließen
+\item Cache löschen. Der Cache liegt an folgender Stelle:
+\begin{DoxyItemize}
+\item mac\+OS: \texorpdfstring{$\sim$}{\string~}/\+\+Library/\+\+Application Support/\+\+Code/\+\+Cache/
+\item Windows: APPDATA\%\textbackslash{}\+Code\textbackslash{}\+Cache\textbackslash{}
+\item Linux: \texorpdfstring{$\sim$}{\string~}/.config/\+\+Code/\+\+Cache/ 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md17}{}\doxysubsection{\texorpdfstring{Debugger hält nicht beim ersten Befehl einer Assembler Prozedur}{Debugger hält nicht beim ersten Befehl einer Assembler Prozedur}}\label{md__erste_hilfe_koffer_autotoc_md17}
+
+\begin{DoxyItemize}
+\item Der vom Compiler generierte Code zu einer Funktion hat einen Prolog und einen Epilog. Das ist der Code zur Verwaltung von Stackframes etc. Wenn man C-\/\+Level debugt, möchte man bei einen Step\+Into nach dem Prolog Code anhalten. Dafür fügt der Compiler entsprechende Informationen für den Debugger ein (gdwarf-\/2 oder gdwarf-\/4). Der von uns verwendete Assembler armasm fügt diese Infos leider nicht ein. Man kann sie auch nicht über Assembler Direktiven (wie .loc und .file beim gas Assembler) einfügen. Also rät der Debugger bei einer Assembler Prozedur, wo der Prolog fertig ist. Das führt dazu, dass man in einer \texorpdfstring{$\ast$}{*}.s Datei in der Regel keinen Breakpoint auf den ersten Befehl einer Assembler Prozedur setzen kann bzw. Step\+Into erst beim zweiten Befehl der Assembler Prozedur hält. Es gibt drei Möglichkeiten, wie man trotzdem beim ersten Befehl einer Assembler Prozedur anhalten kann.
+\item Man fügt als ersten Befehl der Assembler Prozedur einen NOP Befehl ein. Der Debugger geht bei dem Befehl NOP davon aus, dass der Prolog fertig ist. Somit kann man auf den NOP Befehl einen Breakpoint setzen.
+\item Man setzt den Breakpoint im Disassembler View auf den ersten Befehl der Assembler Prozedur (typischer Weise der PUSH).
+\item Man setzt einen Breakpoint bei dem BL Befehl, der in die Assembler Prozedur springt. Über den Debugger Befehl stepi (Kurzform si) führt der Debugger genau eine Instruktion aus (daher das i wie Instruktion :)) -\/ also den BL Befehl. Dann hält der Debugger am ersten Befehl der Assembler Prozedur an. Leider gibt es für den Befehl si keinen Button im Debugger View. Daher muss man in der Konsole des Debugger den Befehl „\texorpdfstring{$>$}{>} si“ eingeben (Das „\texorpdfstring{$>$}{>}“ ist wichtig, siehe Kommentar oben)
+\item Anmerkung: Man könnten auf lange Sicht den armasm durch den gas Assembler ersetzen. Dann kann man mit .loc und .file Assembler Direktiven für den Debugger einfügen. 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md18}{}\doxysubsection{\texorpdfstring{Probleme mit den C-\/\+Pretty-\/\+Printer oder clang-\/tity}{Probleme mit den C-\/\+Pretty-\/\+Printer oder clang-\/tity}}\label{md__erste_hilfe_koffer_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Wir verwenden den Language Server clangd. Dieser bindet Bibliotheken, die die clang-\/format und clang-\/tidy Funktionalität zur Verfügung stellen, an. Wenn die Ansteuerung von clang-\/tidy und clang-\/format über die Python Skripte funktioniert, aber zum Beispiel keine Warnungen im Problem Fenster angezeigt werden oder der Pretty-\/\+Printer für die aktuelle Datei im Text-\/\+Editor nicht aufgerufen werden kann, dann ist eventuell clangd nicht installiert. Überprüfe via clangd --version, ob clangd installiert ist bzw. gefunden wird. 
+\end{DoxyItemize}\hypertarget{md__erste_hilfe_koffer_autotoc_md19}{}\doxysubsection{\texorpdfstring{Probleme mit clang-\/tidy}{Probleme mit clang-\/tidy}}\label{md__erste_hilfe_koffer_autotoc_md19}
+
+\begin{DoxyItemize}
+\item clangd unterstützt auch clang-\/tidy. Dazu wird eine entsprechende Bibliothek mit clang-\/tidy Funktionen angebunden. Lint-\/all.\+py verwendet eine eigenständige clang-\/tidy Version. Die Anzahl der Warnungen der clangd internen clang-\/tidy Version und der eigenständigen clang-\/tidy Version unterscheiden sich manchmal.
+\item Manchmal ist es sinnvoll, dass der Language Server clangd neu gestartet wird und seinen Meldungen in Output Fenster unter clangd angeschaut werden. Ein Update des CMSIS Projekts ist oftmals nicht sinnvoll, da CMSIS die Datei settings.\+json überschreibt und dann auch Argumente, die zum Test bei Aufruf von clangd genutzt werden, überschriebt.
+\item clangd wird wie folgt neu gestartet: Shift-\/\+Cltl-\/P (bzw. Shift-\/\+Cmd-\/P auf MAC) und dann den Befehl „“clangd: Restart language server“ ausführen. Oftmals ist es hilfreich, wenn man vorab den Output von clangd löschen. Weiterhin ist es hilfreich wenn in settings.\+json das folgende eingefügt wird: "{}clangd.\+arguments"{}: \+["{}-\/-\/clang-\/tidy"{},"{}--log=verbose“]
+\item 
+\end{DoxyItemize}

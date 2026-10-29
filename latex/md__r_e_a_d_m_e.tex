@@ -1,0 +1,444 @@
+\chapter{Inhaltsverzeichnis }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Inhaltsverzeichnis@{Inhaltsverzeichnis}}
+\label{md__r_e_a_d_m_e_autotoc_md20}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md20}%
+
+
+
+\begin{DoxyItemize}
+\item Anleitung zur Installation von ST-\/\+Link
+\item Anleitung zur Installation von Visual Studio Code und MDK 6
+\begin{DoxyItemize}
+\item Systemanforderungen
+\item Schritte zur Installation
+\item Windows
+\item mac\+OS
+\item Linux
+\end{DoxyItemize}
+\item Installation von Arm Keil Studio Pack in VS Code
+\item Anleitung zum Auschecken eines Git\+Hub-\/\+Projekts in VS Code
+\begin{DoxyItemize}
+\item Nur für die Integration
+\item Submodule initieren
+\end{DoxyItemize}
+\item Anleitung zur Verwendung von vcpkg-\/configuration und Aktivierung der Umgebung
+\item Building
+\item Installation und Verwendung des C-\/\+Pretty-\/\+Printers
+\item Installation und Verwendung des C-\/\+Linters von clang
+\item Keil µ\+Vision GUI
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysection{\texorpdfstring{Anleitung zur Installation von ST-\/\+Link}{Anleitung zur Installation von ST-\/\+Link}}\label{md__r_e_a_d_m_e_autotoc_md21}
+ST-\/\+Link ist notwendig zum Flashen und Debuggen von Mikrocontrollern, die von STMicroelectronics hergestellt werden. Diese Anleitung führt Sie durch die Installation von ST-\/\+Link auf verschiedenen Betriebssystemen.\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md22}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Download:}} Laden Sie die ST-\/\+Link Treiber und das ST-\/\+Link Utility von der offiziellen STMicroelectronics Website herunter: \href{https://www.st.com/en/development-tools/stsw-link009.html}{\texttt{https:\+/\+/\+www.\+st.\+com/\+en/\+development-\/tools/\+stsw-\/link009.\+html}}
+\item {\bfseries{Installation:}}
+\begin{DoxyItemize}
+\item Führen Sie die heruntergeladene {\ttfamily .exe} Datei aus, um die Treiber und das Utility zu installieren.
+\item Folgen Sie den Anweisungen auf dem Bildschirm, um die Installation abzuschließen.
+\end{DoxyItemize}
+\item Stellen Sie eine vollständige Installation von git sicher. 
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md23}{}\doxysubsection{\texorpdfstring{Linux}{Linux}}\label{md__r_e_a_d_m_e_autotoc_md23}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Installation (über Paketmanager):}}
+\begin{DoxyItemize}
+\item {\bfseries{Debian/\+\+Ubuntu:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ update}
+\DoxyCodeLine{sudo\ apt\ install\ stlink-\/tools}
+
+\end{DoxyCode}
+
+\item {\bfseries{Fedora:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ dnf\ install\ stlink-\/tools}
+
+\end{DoxyCode}
+
+\item {\bfseries{Andere Distributionen:}} Verwenden Sie den entsprechenden Paketmanager Ihrer Distribution.
+\end{DoxyItemize}
+\item {\bfseries{Manuelle Installation (falls erforderlich):}}
+\begin{DoxyItemize}
+\item Klonen Sie das ST-\/\+Link Repository von Git\+Hub: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ [https://github.com/stlink-\/org/stlink.git](https://github.com/stlink-\/org/stlink.git)}
+
+\end{DoxyCode}
+
+\item Navigieren Sie in das geklonte Verzeichnis und führen Sie die folgenden Befehle aus: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ stlink}
+\DoxyCodeLine{./autogen.sh}
+\DoxyCodeLine{./configure}
+\DoxyCodeLine{make}
+\DoxyCodeLine{sudo\ make\ install}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md24}{}\doxysubsection{\texorpdfstring{mac\+OS}{mac\+OS}}\label{md__r_e_a_d_m_e_autotoc_md24}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Installation (mit Homebrew):}}
+\begin{DoxyItemize}
+\item Stellen Sie sicher, dass Homebrew installiert ist. Wenn nicht, folgen Sie den Anweisungen auf der Homebrew Website: \href{https://brew.sh/}{\texttt{https:\+/\+/\+brew.\+sh/}}
+\item Installieren Sie ST-\/\+Link mit dem folgenden Befehl: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{brew\ install\ stlink}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md25}{}\doxysection{\texorpdfstring{Anleitung zur Installation von Visual Studio Code und MDK 6}{Anleitung zur Installation von Visual Studio Code und MDK 6}}\label{md__r_e_a_d_m_e_autotoc_md25}
+Visual Studio Code (VSCode) ist ein leistungsfähiger und kostenloser Code-\/\+Editor, der für verschiedene Programmiersprachen verwendet werden kann.\hypertarget{md__r_e_a_d_m_e_autotoc_md26}{}\doxysubsection{\texorpdfstring{Systemanforderungen}{Systemanforderungen}}\label{md__r_e_a_d_m_e_autotoc_md26}
+
+\begin{DoxyItemize}
+\item {\bfseries{Windows:}} Windows 7, 8, 10 oder 11 (64-\/bit)
+\item {\bfseries{mac\+OS:}} mac\+OS 10.\+11 oder höher
+\item {\bfseries{Linux:}} Ubuntu, Debian, Red Hat, Fedora, SUSE (64-\/bit)
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md27}{}\doxysubsection{\texorpdfstring{Schritte zur Installation}{Schritte zur Installation}}\label{md__r_e_a_d_m_e_autotoc_md27}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md28}{}\doxysubsubsection{\texorpdfstring{1. Visual Studio Code Webseite besuchen}{1. Visual Studio Code Webseite besuchen}}\label{md__r_e_a_d_m_e_autotoc_md28}
+Öffne deinen bevorzugten Webbrowser und gehe auf die offizielle Webseite von Visual Studio Code:
+
+\href{https://code.visualstudio.com/}{\texttt{Download VSCode}} oder öffne diese Seite \href{https://code.visualstudio.com/}{\texttt{https:\+/\+/\+code.\+visualstudio.\+com/}}\hypertarget{md__r_e_a_d_m_e_autotoc_md29}{}\doxysubsubsection{\texorpdfstring{2. Passende Version herunterladen}{2. Passende Version herunterladen}}\label{md__r_e_a_d_m_e_autotoc_md29}
+Auf der Webseite wird automatisch die passende Version für dein Betriebssystem vorgeschlagen. Sollte dies nicht der Fall sein, wähle dein Betriebssystem manuell aus.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Windows Nutzer}}: Klicke auf "{}\+Windows"{} und lade das Installationspaket ({\ttfamily .exe}).
+\item {\bfseries{mac\+OS Nutzer}}: Wähle die Option für mac\+OS und lade das {\ttfamily .zip}-\/Archiv.
+\item {\bfseries{Linux Nutzer}}: Wähle das passende Paket für deine Distribution, z.\+B. {\ttfamily .deb} für Debian-\/basierte Systeme oder {\ttfamily .rpm} für Red Hat-\/basierte Systeme.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md30}{}\doxysubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md30}
+
+\begin{DoxyEnumerate}
+\item Laden Sie den Visual Studio Code Installer für Windows herunter. ~\newline
+
+\item Führen Sie den heruntergeladenen Installer (VSCode\+User\+Setup-\/\{version\}.exe) aus. Dies dauert nur eine Minute. ~\newline
+
+\item VS Code wird standardmäßig unter {\ttfamily C:\textbackslash{}Users\textbackslash{}\{Benutzername\}\textbackslash{}App\+Data\textbackslash{}Local\textbackslash{}Programs\textbackslash{}Microsoft VS Code} installiert. ~\newline
+
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md31}{}\doxysubsection{\texorpdfstring{mac\+OS}{mac\+OS}}\label{md__r_e_a_d_m_e_autotoc_md31}
+
+\begin{DoxyEnumerate}
+\item Laden Sie Visual Studio Code für mac\+OS herunter. ~\newline
+
+\item Öffnen Sie die Download-\/\+Liste des Browsers und suchen Sie das heruntergeladene Archiv. ~\newline
+
+\item Extrahieren Sie den Inhalt des Archivs. Verwenden Sie einen Doppelklick für einige Browser oder wählen Sie das "{}\+Lupensymbol"{} bei Safari. ~\newline
+
+\item Ziehen Sie {\ttfamily Visual Studio Code.\+app} in den {\bfseries{Anwendungen}}-\/Ordner, um es im mac\+OS Launchpad verfügbar zu machen. ~\newline
+
+\item Öffnen Sie VS Code aus dem {\bfseries{Anwendungen}}-\/Ordner, indem Sie auf das Symbol doppelklicken. ~\newline
+
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md32}{}\doxysubsection{\texorpdfstring{Linux}{Linux}}\label{md__r_e_a_d_m_e_autotoc_md32}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md33}{}\doxysubsubsection{\texorpdfstring{Debian-\/ und Ubuntu-\/basierte Distributionen}{Debian-\/ und Ubuntu-\/basierte Distributionen}}\label{md__r_e_a_d_m_e_autotoc_md33}
+
+\begin{DoxyEnumerate}
+\item Laden Sie das .deb-\/\+Paket (64-\/Bit) für Visual Studio Code herunter. ~\newline
+
+\item Installieren Sie das Paket über das grafische Softwarecenter, falls verfügbar, oder über die Befehlszeile mit: ~\newline
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ install\ ./<datei>.deb}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md34}{}\doxysection{\texorpdfstring{Installation von Arm Keil Studio Pack in VS Code}{Installation von Arm Keil Studio Pack in VS Code}}\label{md__r_e_a_d_m_e_autotoc_md34}
+
+\begin{DoxyEnumerate}
+\item Starten Sie Visual Studio Code und klicken auf der linken Seite auf Extentions oder drücken {\ttfamily Strg+\+Shift+X}.
+\item Suchen Sie in dem Extentions-\/\+Suchfeld nach "{}\+Arm Keil Studio Pack"{} und klicken Sie auf die Schaltfläche "{}\+Installieren"{}, um alle Erweiterungen im Arm Keil Studio Pack zu installieren.
+\item Visual Studio Code installiert nun die Erweiterungen. Nach Abschluss der Installation ist auf der linken Seite (Aktivitätsleiste) die Schaltfläche CMSIS verfügbar. Mit Hilfe von CMSIS (Cortex Microcontroller Software Interface Standard) kann ein Programm im Embedded Bereich gehandelt werden.
+\item Sie werden aufgefordert, eine MDK Community-\/\+Lizenz für die nicht-\/kommerzielle Nutzung zu aktivieren. Akzeptieren Sie diese Option, wenn Sie keine Lizenz haben und der nicht-\/kommerziellen Nutzung zustimmen. Wenn Sie eine kommerzielle Lizenz für Keil MDK installiert haben, lehnen Sie diese Option ab. In der Fussleiste wird nun "{}\+Keil MDK Community (non-\/commercial free of charge)"{} stehen
+\item Es hat sich auch als sinnvoll erwiesen die {\ttfamily ibm-\/assembler} Erweiterung zu installieren.
+\end{DoxyEnumerate}
+
+Das Arm Keil Studio Pack installiert die folgenden empfohlenen Erweiterungen für die Embedded-\/ und Io\+T-\/\+Softwareentwicklung auf Arm-\/basierten Mikrocontroller-\/\+Geräten:
+
+
+\begin{DoxyItemize}
+\item Arm
+\begin{DoxyItemize}
+\item Arm CMSIS Debugger
+\item Arm CMSIS Solution: Unterstützung für die Arbeit mit CMSIS-\/\+Lösungen (csolution-\/\+Projekte)
+\item Arm Debugger
+\item Arm Device Manager: Verwalten von Geräteverbindungen für Arm Cortex-\/\+M-\/basierte Mikrocontroller, Entwicklungsboards und Debug-\/\+Probes
+\item Arm Embedded Debugger: Flashen und Debuggen auf Arm Cortex-\/\+M-\/\+Targets, die das Microsoft Debug Adapter Protocol (DAP) implementieren
+\item Arm Keil Studio Pack (MDK c6)
+\item Arm Remote Build: Durchführen von Remote-\/\+Builds von Projekten für Arm Cortex-\/\+M-\/\+Targets
+\item Arm Virtual Hardware: Verwalten von Arm Virtual Hardware und Ausführen von Embedded-\/\+Anwendungen darauf
+\item Arm Tools Environment Manager
+\end{DoxyItemize}
+\item clang
+\item CDT
+\begin{DoxyItemize}
+\item CDT GDB Debug Adapter Extension
+\item Memory Inspector
+\item Peripheral Inspector
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md35}{}\doxysection{\texorpdfstring{Anleitung zum Auschecken eines Git\+Hub-\/\+Projekts in VS Code}{Anleitung zum Auschecken eines Git\+Hub-\/\+Projekts in VS Code}}\label{md__r_e_a_d_m_e_autotoc_md35}
+Folgen Sie diesen Schritten, um das Git\+Hub-\/\+Projekt mit der URL "{}https:\+/\+/\+github.\+com/\+\+Transport-\/\+Protocol/\+\+ITS-\/\+BRD-\/\+VSC/\+\+ITS-\/\+BRD-\/\+VSC.\+git"{} in Visual Studio Code auszuchecken:
+
+
+\begin{DoxyEnumerate}
+\item Öffnen Sie Visual Studio Code.
+\item Öffnen Sie die Befehlspalette, indem Sie {\ttfamily Strg+\+Shift+P} (Windows/\+\+Linux) oder {\ttfamily Cmd+\+Shift+P} (mac\+OS) drücken.
+\item Geben Sie "{}\+Git:\+ Clone"{} in die Befehlspalette ein und wählen Sie den Befehl "{}\+Git:\+ Clone"{} aus. Wenn dort "{}\+Git:\+ Clone"{} nicht erscheint, muss erst git installiert werden.
+\item Geben Sie die URL des Git\+Hub-\/\+Repositorys ein: {\ttfamily \href{https://github.com/Transport-Protocol/ITS-BRD-VSC.git}{\texttt{https:\+/\+/\+github.\+com/\+\+Transport-\/\+Protocol/\+\+ITS-\/\+BRD-\/\+VSC.\+git}}} ein. (Wenn Sie die Git\+Hub Erweiterung installiert haben, können Sie das Projekt auch mit ITS-\/\+BRD/\+\+ITS-\/\+BRD clonen )
+\item Wählen Sie einen Ordner auf Ihrem lokalen Computer aus, in den das Repository geklont werden soll. ( In diesem Ordner wird der Ordner ITS-\/\+BRD-\/\+VSC angelegt. Dort werden alle notwendigen Dateien hinein kopiert )
+\item VS Code klont nun das Repository in den ausgewählten Ordner und öffnet es anschließend.
+\item Wenn Sie von Git\+Hub dazu aufgefordert werden, authentifizieren Sie sich bei Git\+Hub. VS Code verwendet die Git-\/\+Authentifizierung, die vom Betriebssystem bereitgestellt wird (z. B. mac\+OS Keychain oder Windows Credential Manager).
+\item Nach erfolgreicher Authentifizierung sollte das Repository erfolgreich in VS Code geklont und geöffnet sein.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md36}{}\doxysubsubsection{\texorpdfstring{Nur für die Integration (für das VS Praktikum)}{Nur für die Integration (für das VS Praktikum)}}\label{md__r_e_a_d_m_e_autotoc_md36}
+
+\begin{DoxyEnumerate}
+\item Klicken Sie in der unteren linken Ecke des VS Code-\/\+Fensters auf den aktuellen Branch-\/\+Namen (standardmäßig {\ttfamily main}). Dadurch öffnet sich die Branch-\/\+Liste.
+\item Suchen Sie in der Branch-\/\+Liste nach dem Branch {\ttfamily (aus der Vorlesung)}. Wenn der Branch nicht in der Liste angezeigt wird, klicken Sie auf "{}\+Alle Branches abrufen"{}, um die aktuelle Liste der Remote-\/\+Branches abzurufen.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md37}{}\doxysubsubsection{\texorpdfstring{Submodule initieren}{Submodule initieren}}\label{md__r_e_a_d_m_e_autotoc_md37}
+
+\begin{DoxyEnumerate}
+\item Öffnen Sie das Terminal in VS Code durch Klicken auf "{}\+Terminal"{} \texorpdfstring{$>$}{>} "{}\+Neues Terminal"{} in der Menüleiste oder durch Drücken von {\ttfamily Strg+\+Shift+ö} (Windows/\+\+Linux) oder {\ttfamily Cmd+\+Shift+ö} (mac\+OS).
+\item Um die Submodule zu initialisieren, führen Sie den folgenden Befehl im Terminal aus:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{submodule\ init\ }
+
+\end{DoxyCode}
+
+
+Dieser Befehl initialisiert die Submodule und bereitet sie für die Verwendung vor.
+
+
+\begin{DoxyEnumerate}
+\item Um die Submodule rekursiv zu aktualisieren und sicherzustellen, dass sie auf dem neuesten Stand sind, führen Sie den folgenden Befehl aus:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{submodule\ update\ -\/-\/recursive\ }
+
+\end{DoxyCode}
+
+
+Dieser Befehl lädt den Inhalt der Submodule herunter und aktualisiert sie auf den neuesten Stand. Die Option {\ttfamily -\/-\/recursive} stellt sicher, dass auch verschachtelte Submodule aktualisiert werden. ~\newline
+
+
+Bitte warten Sie bis die Befehle abgeschlossen sind. ~\newline
+
+
+Wenn Sie in Zukunft die Submodule erneut aktualisieren möchten, führen Sie einfach den Befehl {\ttfamily git submodule update -\/-\/recursive} im Terminal aus. ~\newline
+\hypertarget{md__r_e_a_d_m_e_autotoc_md38}{}\doxysection{\texorpdfstring{Ein Projekt wählen, builden und auf das Board übertragen}{Ein Projekt wählen, builden und auf das Board übertragen}}\label{md__r_e_a_d_m_e_autotoc_md38}
+
+\begin{DoxyEnumerate}
+\item Um zu testen, ob alles richtig installiert ist, soll das Projekt "{}\+Test\+New\+Font"{} genutzt werden. Dazu klicken Sie in der Aktivierungsleiste (linke Seite) auf das CMSIS-\/\+Symbol.
+\item In dem sich öffnenden CMSIS-\/\+Fenster wird oben, über die "{}..."{} -\/\texorpdfstring{$>$}{>} "{}\+Select active Solution from Workspace"{} und dann {\ttfamily Programs/\+\+Test\+New\+Fonts/\+\+Test\+New\+Fonts} gewählt.
+\item Anschließend über das gleiche Menue "{}..."{} -\/\texorpdfstring{$>$}{>}Refresh (reload packs, update RTE)
+\item Klicken Sie nun auf das Explorer Symbol (oben links)
+\item Öffnen Sie das Kontextmenü (rechte Maustaste) von der Datei vcpkg-\/configuration.\+json. Wählen Sie zuerst "{}\+Update Tool registry"{} und anschließend "{}\+Reactivate Environment"{} (Das kaann eine gewisse Zeit dauern)
+\end{DoxyEnumerate}
+
+Sie werden aufgefordert, eine MDK Community-\/\+Lizenz für die nicht-\/kommerzielle Nutzung zu aktivieren. Akzeptieren Sie diese Option, wenn Sie keine Lizenz haben und der nicht-\/kommerziellen Nutzung zustimmen. Wenn Sie eine kommerzielle Lizenz für Keil MDK installiert haben, lehnen Sie diese Option ab. ~\newline
+\hypertarget{md__r_e_a_d_m_e_autotoc_md39}{}\doxysection{\texorpdfstring{Building}{Building}}\label{md__r_e_a_d_m_e_autotoc_md39}
+
+\begin{DoxyEnumerate}
+\item Klicken Sie auf das CMSIS-\/\+Symbol
+\item Klicken Sie in dem CMSIS-\/\+Menü auf den Hammer ("{}\+Build Solution"{}) Das Projekt sollte nun ohne Fehler gebaut werden.
+\item Klicken Sie in dem CMSIS-\/\+Menü auf das Pfeil (Load \& Run) um das Projekt auf das Board zu übertragen und dort laufen zu lassen, oder auf den Käfer (Load \& Debug) , um das Projekt auf das Board zu übertragen und dort das Programm im Einzelschritt Modus laufen zu lassen.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md40}{}\doxysection{\texorpdfstring{Neues Projekt erstellen}{Neues Projekt erstellen}}\label{md__r_e_a_d_m_e_autotoc_md40}
+
+\begin{DoxyEnumerate}
+\item Öffnen Sie das Terminal in VS Code durch Klicken auf "{}\+Terminal"{} \texorpdfstring{$>$}{>} "{}\+Neues Terminal"{} in der Menüleiste oder durch Drücken von {\ttfamily Strg+\+Shift+ö} (Windows/\+\+Linux) oder {\ttfamily Cmd+\+Shift+ö} (mac\+OS).
+\item Gehen Sie mit Hilfe von cd (Change Direktorie) in den Ordner bin (ITS-\/\+BRD-\/\+VSC/\+bin)
+\item Führen Sie den Befehl create\+New\+Project\+C.\+bat (Windows) / ./\+create\+New\+ProjectC.sh (mac\+OS / Linux) aus um ein neues c Projekt zu erzeugen. Führen Sie den Befehlt create\+New\+Project\+ASM.\+bat (Windows) / ./\+create\+New\+Project\+ASM.sh (mac\+OS/\+\+Linux) aus, um ein neues Assembler Projekt zu erzeugen. Sie werden aufgefordert ein Projekt Name einzugeben. Der Name muss mit einem Großbuchstabe beginnen. Nun wird ein neues Projekt erstellt.
+\item Klicken Sie auf CMSIS
+\item In dem sich öffnenden CMSIS-\/\+Fenster wird oben, über die "{}..."{} -\/\texorpdfstring{$>$}{>} "{}\+Select active Solution from Workspace"{} und dann {\ttfamily Programs/\texorpdfstring{$<$}{<}Name des Projekt\texorpdfstring{$>$}{>}/\texorpdfstring{$<$}{<}Name des Projekt\texorpdfstring{$>$}{>}} gewählt.
+\item Anschließend über das gleiche Menue "{}..."{} -\/\texorpdfstring{$>$}{>}Refresh (reload packs, update RTE)
+\item Klicken Sie nun auf das Explorer Symbol (oben links)
+\item Öffnen Sie das Kontextmenü (rechte Maustaste) von der Datei vcpkg-\/configuration.\+json. Wählen Sie zuerst "{}\+Update Tool registry"{} und anschließend "{}\+Reactivate Environment"{}
+\item Nun weiter mit dem Menü Punkt Building (siehe Anleitung weiter oben)
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md41}{}\doxysection{\texorpdfstring{Neue C Module in vs Code integrieren}{Neue C Module in vs Code integrieren}}\label{md__r_e_a_d_m_e_autotoc_md41}
+
+\begin{DoxyEnumerate}
+\item Klicken Sie nun auf das Explorer Symbol (oben links)
+\item Mit Hilfe der rechten Maustaste auf dem Ordner Src kann ein neues C-\/\+File erstellt wreden.
+\item Mit Hilfe der rechten Maustaste auf dem Ordner Inc kann ein neues h-\/\+File erstellt werden.
+\item Öffnen Sie die Datei $<$\+Projekt Name$>$.cproject.\+yml
+\item Ganz unten in der Datei, in der group Program/\+\+User/\+\+Src muss das neue File mit Hilfe von -\/ file: $<$file name$>$ hinzu gefügt werden.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md42}{}\doxysection{\texorpdfstring{Installation und Verwendung des C-\/\+Petty-\/\+Printers}{Installation und Verwendung des C-\/\+Petty-\/\+Printers}}\label{md__r_e_a_d_m_e_autotoc_md42}
+Der Pretty-\/\+Printer basiert auf dem clang Pretty-\/\+Printer clang-\/format. In dieser VSCode Konfiguration wird der Language Server clangd eingesetzt. Ein Language Server unterstützt typische Editor Funktionen wie Code-\/\+Vervollständigung, das Finden von Definitionen und Echtzeit-\/\+Fehleranalysen. In clangd ist auch der Pretty-\/\+Printer clang-\/format integriert. Aus Performance-\/\+Gründen ist clang-\/format direkt in clangd integriert -\/ clangd verwendet entsprechende Bibliotheken von clang-\/format.\hypertarget{md__r_e_a_d_m_e_autotoc_md43}{}\doxysubsection{\texorpdfstring{Konfiguration des clang Pretty-\/\+Printers}{Konfiguration des clang Pretty-\/\+Printers}}\label{md__r_e_a_d_m_e_autotoc_md43}
+Die Datei “.\+clang-\/format“ im Wurzelverzeichnis des VSCode Projekts legt die Formatierung fest. Passen Sie diese bei ggf. an Ihre Bedürfnisse an.\hypertarget{md__r_e_a_d_m_e_autotoc_md44}{}\doxysubsection{\texorpdfstring{Aufruf des Pretty-\/\+Printers für eine Datei im Text-\/\+Editor}{Aufruf des Pretty-\/\+Printers für eine Datei im Text-\/\+Editor}}\label{md__r_e_a_d_m_e_autotoc_md44}
+Bearbeiten Sie eine C-\/\+Datei im Text-\/\+Editor, wird der Pretty-\/\+Printer für diese Datei über ein Keybinding aufgerufen. \hypertarget{md__r_e_a_d_m_e_autotoc_md45}{}\doxysubsubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md45}
+“\+Alt+\+Shift+\+F“ \hypertarget{md__r_e_a_d_m_e_autotoc_md46}{}\doxysubsubsection{\texorpdfstring{Linux (Ubuntu)}{Linux (Ubuntu)}}\label{md__r_e_a_d_m_e_autotoc_md46}
+“\+Ctrl+\+Shift+\+I“ \hypertarget{md__r_e_a_d_m_e_autotoc_md47}{}\doxysubsubsection{\texorpdfstring{MAC}{MAC}}\label{md__r_e_a_d_m_e_autotoc_md47}
+“\+Opt+\+Shift+\+F“\hypertarget{md__r_e_a_d_m_e_autotoc_md48}{}\doxysubsection{\texorpdfstring{Aufruf des Pretty-\/\+Printers für alle Dateien des CMSIS-\/\+Projekts}{Aufruf des Pretty-\/\+Printers für alle Dateien des CMSIS-\/\+Projekts}}\label{md__r_e_a_d_m_e_autotoc_md48}
+Das Python Script bin/\+format\+\_\+all.\+py ruft den Pretty-\/\+Printer für alle \texorpdfstring{$\ast$}{*}.c und \texorpdfstring{$\ast$}{*}.h Dateien des aktuellen CMSIS-\/\+Projekts auf. Da in diesem Fall der eigenständige Pretty-\/\+Printer clang-\/format Eingesetz wird, muss sowohl dieser wie auch Python3 installiert werden.\hypertarget{md__r_e_a_d_m_e_autotoc_md49}{}\doxysubsubsection{\texorpdfstring{Installation von Python}{Installation von Python}}\label{md__r_e_a_d_m_e_autotoc_md49}
+Überprüfen Sie, ob eine python3 Version auf Ihrem System installiert ist. Rufen Sie dazu in einer Shell den Befehl
+\begin{DoxyItemize}
+\item python3 --version
+\end{DoxyItemize}
+
+auf. Erscheinen keine Versionsinformationen muss python3 auf Ihrem System wie folgt installiert werden. \hypertarget{md__r_e_a_d_m_e_autotoc_md50}{}\doxysubsubsubsection{\texorpdfstring{MAC}{MAC}}\label{md__r_e_a_d_m_e_autotoc_md50}
+Führen Sie in der bash Shell folgenden Befehl aus:
+\begin{DoxyItemize}
+\item brew install python3 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md51}{}\doxysubsubsubsection{\texorpdfstring{Linux}{Linux}}\label{md__r_e_a_d_m_e_autotoc_md51}
+Führen Sie in der bash Shell folgende Befehle aus:
+\begin{DoxyItemize}
+\item sudo apt update
+\item sudo apt install python3 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md52}{}\doxysubsubsubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md52}
+
+\begin{DoxyItemize}
+\item Öffnen Sie ein Terminal im Admin Modus über einen Rechtsklick auf dem Windows Symbol in der Task-\/\+Leiste.
+\item Durch Eingabe des Befehls python3 gelangen Sie in den Microsoft-\/\+Store zur Installation von python. Führen Sie das Installationsskript aus, indem Sie nach den get-\/\+Button den open-\/\+Button drücken.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md53}{}\doxysubsubsection{\texorpdfstring{Installation der clang Pretty-\/\+Printers}{Installation der clang Pretty-\/\+Printers}}\label{md__r_e_a_d_m_e_autotoc_md53}
+Überprüfen Sie, ob der clang Pretty-\/\+Printer installiert ist. Rufen Sie dazu in einer Shell den Befehl
+\begin{DoxyItemize}
+\item clang-\/format --version
+\end{DoxyItemize}
+
+auf. Erscheinen keine Versionsinformationen muss clang-\/format auf Ihrem System wie folgt installiert werden. \hypertarget{md__r_e_a_d_m_e_autotoc_md54}{}\doxysubsubsubsection{\texorpdfstring{MAC}{MAC}}\label{md__r_e_a_d_m_e_autotoc_md54}
+Führen Sie in der bash Shell folgenden Befehl aus:
+\begin{DoxyItemize}
+\item brew install clang-\/format 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md55}{}\doxysubsubsubsection{\texorpdfstring{Linux}{Linux}}\label{md__r_e_a_d_m_e_autotoc_md55}
+Führen Sie in der bash Shell folgende Befehle aus:
+\begin{DoxyItemize}
+\item sudo apt update
+\item sudo apt install clang-\/format 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md56}{}\doxysubsubsubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md56}
+Hier ist clang-\/format schon im Rahmen der Installation von llvm installiert.\hypertarget{md__r_e_a_d_m_e_autotoc_md57}{}\doxysubsubsection{\texorpdfstring{Ausführung des Pretty-\/\+Printers}{Ausführung des Pretty-\/\+Printers}}\label{md__r_e_a_d_m_e_autotoc_md57}
+Sie können die Pretty-\/\+Printer auf drei Arten ausführen.
+\begin{DoxyEnumerate}
+\item Im Terminal wird folgender Befehl ausgeführt:
+\begin{DoxyItemize}
+\item python3 \texorpdfstring{$<$}{<}Pfad zum VScode Projekt\texorpdfstring{$>$}{>}/\+bin/\+format\+\_\+all.py \texorpdfstring{$<$}{<}Pfad zum aktuellen CMSIS-\/\+Projekt\texorpdfstring{$>$}{>}
+\end{DoxyItemize}
+\item Die VSCode Task “\+C-\/\+Pretty-\/\+Printer“ wird ausgeführt.
+\begin{DoxyItemize}
+\item Starten Sie über “\+Ctrl+\+Shift+\+P“ (bzw. “\+Cmd+\+Shift+\+P“ auf einem MAC System) die Ausführung eines Programms.
+\item Wählen und starten Sie das Programm “\+Tasks: Run Task“
+\item Wählen Sie die Ausführung der Task “\+C-\/\+Pretty-\/\+Printer“
+\end{DoxyItemize}
+\item Der C-\/\+Pretty-\/\+Printer wird über ein Keybinding ausgeführt.
+\begin{DoxyItemize}
+\item Einmalig wird die VSCode Task “\+C-\/\+Pretty-\/\+Printer“ an eine entsprechende Tastenkombination gebunden. Die Keybindings sind benutzerspezifisch und stehen somit in der benutzerspezifischen Datei keybindings.\+json. Auf einen MAC System liegt diese Datei im Verzeichnis /\+\+Users/$<$\+Dein\+Benutzername$>$/\+\+Library/\+\+Application Support/\+\+Code/\+\+User/.
+\item Keybindings werden wie folgt eingefügt. Starten Sie über “\+Ctrl+\+Shift+\+P“ (bzw. “\+Cmd+\+Shift+\+P“ auf einem MAC System) die Ausführung eines Programms. Wählen Sie “\+Open Keyboard Shortcuts (JSON)“ aus. In die sich öffnende JSON Datei fügen Sie folgendes Keybinding ein:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[}
+\DoxyCodeLine{\ \ \ \ \ \{\ \ \ "{}key"{}:\ "{}shift+alt+p"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ "{}command"{}:\ "{}workbench.action.tasks.runTask"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ "{}args"{}:\ "{}C-\/Pretty-\/Printer"{}}
+\DoxyCodeLine{\ \ \ \ \ \}}
+\DoxyCodeLine{\ ]}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item Nun kann über “\+Alt+\+Shift+\+P“ (bzw. “\+Opt+\+Shift+\+P“ auf einem MAC System) der C-\/\+Pretty-\/\+Printer für das aktuelle CMSIS-\/\+Projekt ausgeführt werden.
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md58}{}\doxysection{\texorpdfstring{Installation und Verwendung des C-\/\+Linters von clang}{Installation und Verwendung des C-\/\+Linters von clang}}\label{md__r_e_a_d_m_e_autotoc_md58}
+Der C-\/\+Coding-\/\+Style-\/\+Checker basiert auf clang-\/tidy, dem C-\/\+Linter von clang. \textbackslash{} In dieser VSCode Konfiguration wird der Language Server clangd eingesetzt. clangd unterstützt auch die Warnung des C-\/\+Linters clang-\/tidy. Aus Performance-\/\+Gründen ist clang-\/tidy direkt in clangd integriert -\/ clangd verwendet entsprechende Bibliotheken von clang-\/tidy.\hypertarget{md__r_e_a_d_m_e_autotoc_md59}{}\doxysubsection{\texorpdfstring{Konfiguration des Linters clang-\/tidy}{Konfiguration des Linters clang-\/tidy}}\label{md__r_e_a_d_m_e_autotoc_md59}
+clang-\/tidy wird über die Datei .clang-\/tidy, die in obersten Verzeichnis von diesem Repo liegt, konfiguriert. Bei Bedarf können Sie .clang-\/tidy sinnvoll anpassen, zum Beispiel bei den Konventionen für Bezeichner. Wobei das Ausschalten von clang-\/tidy Checks nur in Ausnahmefällen sinnvoll ist.\hypertarget{md__r_e_a_d_m_e_autotoc_md60}{}\doxysubsection{\texorpdfstring{Ausgabe der Warnungen von clang-\/tidy}{Ausgabe der Warnungen von clang-\/tidy}}\label{md__r_e_a_d_m_e_autotoc_md60}
+Für die im Texteditor geöffneten Dateien gibt die clang-\/tidy Version, die in clangd integriert ist, die Warnungen im Problem Window aus.\hypertarget{md__r_e_a_d_m_e_autotoc_md61}{}\doxysubsection{\texorpdfstring{Nutzung einer eigenständigen clang-\/tidy Version}{Nutzung einer eigenständigen clang-\/tidy Version}}\label{md__r_e_a_d_m_e_autotoc_md61}
+Unabhängig von der in clangd integrierten clang-\/tidy Version können Sie eine eigenständige Instanz in clang-\/tidy verwenden. Da die eigenständige clang-\/tidy Version nicht mit clangd gekoppelt ist, erscheinen ihre Ausgaben nicht im Problem-\/\+Window. \textbackslash{} Das Script lint\+\_\+all.\+py überprüft alle Src/\+\texorpdfstring{$\ast$}{*}.c und Inc/\+\texorpdfstring{$\ast$}{*}.h Dateien des aktuellen CMSIS-\/\+Projekts und speichert die Warnungen in der Datei lang\+\_\+tidy\+\_\+result.\+txt ab, die im obersten Verzeichnis des aktuellen CMSIS-\/\+Projekts liegt. Diese Datei können Sie über den VSCode Explorer finden -\/ im CMSIS-\/\+View werden “\texorpdfstring{$\ast$}{*}.txt“ Dateien in der Regel nicht angezeigt.\textbackslash{} Die Verwendung der externen Version von clang-\/tidy ist hilfreich, wenn sie alle \texorpdfstring{$\ast$}{*}.c und \texorpdfstring{$\ast$}{*}.h Dateien des aktuellen CMSIS-\/\+Projekts mit einem Klick überprüfen wollen -\/ eine typische Aktivität in der Endphase eines Entwicklungsschritts.\textbackslash{} Bitte beachten Sie, dass sich die in clangd integrierte Version von clang-\/tidy und die externe Version von clang-\/tidy an wenigen Stellen unterscheiden, was manchmal zu unterschiedlichen Warnungen führt. \hypertarget{md__r_e_a_d_m_e_autotoc_md62}{}\doxysubsubsection{\texorpdfstring{Installation von python3}{Installation von python3}}\label{md__r_e_a_d_m_e_autotoc_md62}
+Da die externe clang-\/tidy Version über ein Python Skript aufgerufen wird, muss zuerst Python3 installiert werden. Das vorherige Kapitel geht auf die Installation von python3 ein. \hypertarget{md__r_e_a_d_m_e_autotoc_md63}{}\doxysubsubsubsection{\texorpdfstring{Installation des Moduls pyyaml}{Installation des Moduls pyyaml}}\label{md__r_e_a_d_m_e_autotoc_md63}
+Weiterhin muss das das Python Modul pyyaml installiert werden. \hypertarget{md__r_e_a_d_m_e_autotoc_md64}{}\doxysubsubsubsubsection{\texorpdfstring{MAC}{MAC}}\label{md__r_e_a_d_m_e_autotoc_md64}
+Führen Sie in der bash Shell folgenden Befehl aus:
+\begin{DoxyItemize}
+\item pip3 install pyyaml 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md65}{}\doxysubsubsubsubsection{\texorpdfstring{Linux}{Linux}}\label{md__r_e_a_d_m_e_autotoc_md65}
+Führen Sie in der bash Shell folgenden Befehl aus:
+\begin{DoxyItemize}
+\item sudo apt update
+\item sudo apt install python3-\/yaml 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md66}{}\doxysubsubsubsubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md66}
+Führen Sie in der Powershell folgenden Befehl aus:
+\begin{DoxyItemize}
+\item pip install pyyaml
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md67}{}\doxysubsubsection{\texorpdfstring{Installation von clang-\/tidy}{Installation von clang-\/tidy}}\label{md__r_e_a_d_m_e_autotoc_md67}
+Überprüfen Sie, ob clang-\/tidy schon installiert ist. Rufen Sie dazu in einer Shell den Befehl
+\begin{DoxyItemize}
+\item clang-\/tidy --version
+\end{DoxyItemize}
+
+auf. Erscheinen keine Versionsinformationen muss clang-\/tidy auf Ihrem System wie folgt installiert werden. \hypertarget{md__r_e_a_d_m_e_autotoc_md68}{}\doxysubsubsubsection{\texorpdfstring{MAC}{MAC}}\label{md__r_e_a_d_m_e_autotoc_md68}
+Führen Sie in der Shell folgenden Befehl aus:
+\begin{DoxyItemize}
+\item brew install llvm 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md69}{}\doxysubsubsubsection{\texorpdfstring{Linux}{Linux}}\label{md__r_e_a_d_m_e_autotoc_md69}
+Führen Sie in der bash Shell folgende Befehle aus:
+\begin{DoxyItemize}
+\item sudo apt update
+\item sudo apt install clang-\/tidy 
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md70}{}\doxysubsubsubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md70}
+Hier ist clang-\/tidy normalerweise im Rahmen der Installation von llvm installiert. Dies können Sie in der Powershell über den Aufruf clang-\/tidy --version überprüfen.
+
+
+\begin{DoxyItemize}
+\item Falls clang-\/tidy nicht installiert ist, laden Sie die aktuelle llvm Version von der Seite \href{https://github.com/llvm/llvm-project/releases}{\texttt{https:\+/\+/\+github.\+com/\+llvm/\+llvm-\/project/\+releases}}.
+\item Führen Sie das heruntergeladene Installation-\/\+Skript aus. Achten Sie darauf, dass die Option „\+LLVM zum PATH aller User hinzufügen“ ausgewählt wird.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md71}{}\doxysubsubsection{\texorpdfstring{Ausführung des externen clang-\/tidy Version}{Ausführung des externen clang-\/tidy Version}}\label{md__r_e_a_d_m_e_autotoc_md71}
+Sie können die externe clang-\/tidy Version auf drei Arten ausführen.
+\begin{DoxyEnumerate}
+\item Im Terminal wird folgender Befehl ausgeführt:
+\begin{DoxyItemize}
+\item python3 \texorpdfstring{$<$}{<}Pfad zum VScode Projekt\texorpdfstring{$>$}{>}/\+bin/\+lint\+\_\+all.py \texorpdfstring{$<$}{<}Pfad zum \texorpdfstring{$\ast$}{*}.csolution.\+yml des aktuellen CMSIS-\/\+Projekt\texorpdfstring{$>$}{>}
+\end{DoxyItemize}
+\item Die VSCode Task “\+C-\/\+Linter“ wird ausgeführt.
+\begin{DoxyItemize}
+\item Starten Sie über “\+Ctrl+\+Shift+\+P“ (bzw. “\+Cmd+\+Shift+\+P“ auf einem MAC System) die Ausführung eines Programms.
+\item Wählen und starten Sie das Programm “\+Tasks: Run Task“
+\item Wählen Sie die Ausführung der Task “\+C-\/\+Linter“
+\end{DoxyItemize}
+\item Der C-\/\+Linter wird über ein Keybinding ausgeführt.
+\begin{DoxyItemize}
+\item Einmalig wird die VSCode Task “\+C-\/\+Linter“ an eine entsprechende Tastenkombination gebunden. Die Keybindings sind benutzerspezifisch und stehen somit in der benutzerspezifischen Datei keybindings.\+json. Auf einen MAC System liegt diese Datei im Verzeichnis /\+\+Users/$<$\+Dein\+Benutzername$>$/\+\+Library/\+\+Application Support/\+\+Code/\+\+User/.
+\item Keybindings werden wie folgt eingefügt. Starten Sie über “\+Ctrl+\+Shift+\+P“ (bzw. “\+Cmd+\+Shift+\+P“ auf einem MAC System) die Ausführung eines Programms. Wählen Sie “\+Open Keyboard Shortcuts (JSON)“ aus. In die sich öffnende JSON Datei fügen Sie folgendes Keybinding ein:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[}
+\DoxyCodeLine{\ \ \ \ \ \{\ \ \ "{}key"{}:\ "{}shift+alt+l"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ "{}command"{}:\ "{}workbench.action.tasks.runTask"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ "{}args"{}:\ "{}C-\/Linter"{}}
+\DoxyCodeLine{\ \ \ \ \ \}}
+\DoxyCodeLine{\ ]}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item Nun kann über “\+Alt+\+Shift+\+L“ (bzw. “\+Opt+\+Shift+\+L“ auf einem MAC System) der C-\/\+Linter für das aktuelle CMSIS-\/\+Projekt ausgeführt werden.
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md72}{}\doxysection{\texorpdfstring{Keil GUI}{Keil GUI}}\label{md__r_e_a_d_m_e_autotoc_md72}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md73}{}\doxysubsubsubsection{\texorpdfstring{Preparation}{Preparation}}\label{md__r_e_a_d_m_e_autotoc_md73}
+Mit {\ttfamily winget} auf Windows die notwendigen Packete installieren. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{winget\ install\ -\/-\/id=Ninja-\/build.Ninja\ \ -\/e}
+\DoxyCodeLine{winget\ install\ -\/e\ -\/-\/id\ Kitware.CMake}
+
+\end{DoxyCode}
+ Wenn die Keil µ\+Vision GUI gestartet wird, ist häufig noch unter Debug der ULink2/\+\+ME Cortex Debugger (abhängig der Installation) eingestellt. Dieser wurde in diesem Setup auf den ST-\/\+Link Debugger umgestellt, wie in dem VSCode Setup. Note: Keil selbst möchte gerne Device Upgrades durchführen.
+
+Mehr: \href{https://developer.arm.com/documentation/101407/0541/User-Interface/Project-Menu-and-Commands}{\texttt{https:\+/\+/\+developer.\+arm.\+com/\+documentation/\+101407/\+0541/\+\+User-\/\+Interface/\+\+Project-\/\+Menu-\/and-\/\+Commands}}\hypertarget{md__r_e_a_d_m_e_autotoc_md74}{}\doxysubsection{\texorpdfstring{Dokumentation (To be fixed)}{Dokumentation (To be fixed)}}\label{md__r_e_a_d_m_e_autotoc_md74}
+
+\begin{DoxyItemize}
+\item s. \href{https://git.haw-hamburg.de/tiboard_dev/its_brd/-/wikis/**Dokumentation-der-Software-des-ITS-Board**}{\texttt{Wiki ITS\+\_\+\+BRD}}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md75}{}\doxysubsection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{md__r_e_a_d_m_e_autotoc_md75}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md76}{}\doxysubsubsection{\texorpdfstring{Probleme Submodule}{Probleme Submodule}}\label{md__r_e_a_d_m_e_autotoc_md76}
+Sollte es Probleme bei dem checkout der Submodule geben, oder Fehlermeldungen erscheinen, die auf die Submodule verweisen, sollte folgendes probiert werden.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ submodule\ foreach\ -\/-\/recursive\ git\ reset\ -\/-\/hard}
+\DoxyCodeLine{git\ submodule\ foreach\ -\/-\/recursive\ git\ clean\ -\/fd}
+\DoxyCodeLine{git\ submodule\ update\ -\/-\/init\ -\/-\/recursive\ -\/-\/force}
+
+\end{DoxyCode}
+ 

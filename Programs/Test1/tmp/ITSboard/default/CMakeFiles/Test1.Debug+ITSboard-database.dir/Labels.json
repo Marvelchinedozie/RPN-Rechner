@@ -1,0 +1,37 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/CMakeFiles/Test1.Debug+ITSboard-database"
+		},
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/CMakeFiles/Test1.Debug+ITSboard-database.rule"
+		},
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-database.rule"
+		},
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-configure.rule"
+		},
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-patch.rule"
+		},
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-update.rule"
+		},
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-download.rule"
+		},
+		{
+			"file" : "/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Test1/tmp/ITSboard/default/Test1.Debug+ITSboard/src/Test1.Debug+ITSboard-stamp/Test1.Debug+ITSboard-mkdir.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Test1.Debug+ITSboard"
+		],
+		"name" : "Test1.Debug+ITSboard-database"
+	}
+}

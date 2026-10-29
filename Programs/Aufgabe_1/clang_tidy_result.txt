@@ -1,0 +1,9 @@
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/Src/stack.c:92:5: warning: invalid case style for variable 'PETER' [readability-identifier-naming]
+   92 | int PETER = 99;
+      |     ^~~~~
+      |     peter
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/Src/stack.c:92:13: warning: 99 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+   92 | int PETER = 99;
+      |             ^
+
+Linting of CMSIS project /Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1 done.

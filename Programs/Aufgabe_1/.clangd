@@ -1,0 +1,10 @@
+CompileFlags:
+  CompilationDatabase: /Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/out/Aufgabe_1/ITSboard/Debug
+
+---
+If:
+  PathMatch: .*\.(c|C|h)$
+CompileFlags:
+  Add:
+    - -include
+    - /Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/out/Aufgabe_1/ITSboard/Debug/compile_macros_c.h

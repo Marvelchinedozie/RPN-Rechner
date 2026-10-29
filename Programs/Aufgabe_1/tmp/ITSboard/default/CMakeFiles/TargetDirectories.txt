@@ -1,0 +1,8 @@
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/database.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/Aufgabe_1.Debug+ITSboard.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/Aufgabe_1.Debug+ITSboard-build.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/Aufgabe_1.Debug+ITSboard-configure.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/Aufgabe_1.Debug+ITSboard-executes.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/Aufgabe_1.Debug+ITSboard-database.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/edit_cache.dir
+/Users/dasmarvels/HAW/Semester2/GS/Praktikum/ITS2_GS/Programs/Aufgabe_1/tmp/ITSboard/default/CMakeFiles/rebuild_cache.dir
